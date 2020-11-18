@@ -1,6 +1,10 @@
 pipeline {
     agent any
     stages {
-        stage("Connect to git and pull the code")
+        stage("Check out project") {
+            steps {
+                echo "connecting to git"
+            }
+        }
     }
 }
