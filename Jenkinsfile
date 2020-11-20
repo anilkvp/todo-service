@@ -27,7 +27,7 @@ pipeline {
         stage("Push image to registry") {
             steps {
                 script {
-                    docker.withRegistry( 'https://coldstoneregistry.azurecr.io', registryCredential ) {
+                    docker.withRegistry( 'https://coldstonereg.azurecr.io', registryCredential ) {
                         dockerImage.push()
                     }
                 }
