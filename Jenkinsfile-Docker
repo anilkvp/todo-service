@@ -1,7 +1,7 @@
 pipeline {
     environment {
-        registry = "coldstoneregistry/todo-service"
-        registryCredential = 'azure-cloud-registry'
+        registry = "anilkvp/todo-service"
+        registryCredential = 'Docker-Hub'
         dockerImage = ''
     }
     agent any
@@ -27,7 +27,7 @@ pipeline {
         stage("Push image to registry") {
             steps {
                 script {
-                    docker.withRegistry( 'coldstoneregistry.azurecr.io', registryCredential ) {
+                    docker.withRegistry( '', registryCredential ) {
                         dockerImage.push()
                     }
                 }
