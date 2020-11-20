@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = "coldstoneregistry/todo-service"
+        registry = "todo-service"
         registryCredential = 'azure-cloud-registry'
         dockerImage = ''
     }
