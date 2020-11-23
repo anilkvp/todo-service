@@ -28,7 +28,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry( 'https://coldstone.azurecr.io', registryCredential ) {
-                        dockerImage.push()
+                        dockerImage.push("latest")
                     }
                 }
             }
