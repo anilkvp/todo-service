@@ -33,7 +33,7 @@ public class TodoController {
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
-        return ResponseEntity.created(uri).body(todo);
+        return ResponseEntity.created(uri).build();
     }
 
     @PutMapping("/todo")

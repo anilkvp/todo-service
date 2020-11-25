@@ -1,11 +1,11 @@
 package com.coldstone.todo.service;
 
-import java.util.Collection;
+import java.util.Optional;
 
 public interface TodoService {
 
-    Collection<Todo> getAll();
-    Todo get(Long id);
+    Iterable<Todo> getAll();
+    Optional<Todo> get(Long id);
     Long create(Todo todo);
     Long update(Todo todo);
     boolean delete(Long id);

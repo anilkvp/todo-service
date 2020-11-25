@@ -3,7 +3,7 @@ package com.coldstone.todo.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
+import java.util.Optional;
 
 @Service
 public class TodoServiceImpl implements TodoService {
@@ -11,23 +11,26 @@ public class TodoServiceImpl implements TodoService {
     @Autowired
     private TodoRepository todoRepository;
 
-    public Collection<Todo> getAll() {
-        return todoRepository.getAll();
+    public Iterable<Todo> getAll() {
+        return todoRepository.findAll();
     }
 
-    public Todo get(Long id) {
-        return todoRepository.get(id);
+    public Optional<Todo> get(Long id) {
+        return todoRepository.findById(id);
     }
 
     public Long create(Todo todo) {
-        return todoRepository.create(todo);
+        Todo t = todoRepository.save(todo);
+        return t.getId();
     }
 
     public Long update(Todo todo) {
-        return todoRepository.update(todo);
+        Todo t = todoRepository.save(todo);
+        return t.getId();
     }
 
     public boolean delete(Long id) {
-        return todoRepository.delete(id);
+        todoRepository.deleteById(id);
+        return true;
     }
 }
