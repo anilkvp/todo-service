@@ -17,14 +17,14 @@ public class Todo {
 
     private String type;
 
-    @Column(nullable = false)
+    @Column(name="action", nullable = false)
     private String action;
 
     private String title;
-
-    @Column(name="createDate", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable=false, updatable=false, nullable = false)
+/*
+    @Column(name="create_date", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable=false, updatable=false, nullable = false)
     private Date createDate;
 
-    @Column(name="updateDate", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable=false, updatable=false, nullable = false)
-    private Date updateDate;
+    @Column(name="update_date", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable=false, updatable=false, nullable = false)
+    private Date updateDate;*/
 }
