@@ -5,6 +5,9 @@ pipeline {
         dockerImage = ''
     }
     agent any
+    triggers {
+      pollSCM ''
+    }
     stages {
         stage("Check out project") {
             steps {
