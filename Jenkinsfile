@@ -5,6 +5,9 @@ pipeline {
         dockerImage = ''
     }
     agent any
+    triggers {
+        cron('* * * * *')
+    }
     stages {
         stage("Check out project") {
             steps {
@@ -20,7 +23,7 @@ pipeline {
         stage("Build docker image ") {
             steps {
                 script {
-                    dockerImage = docker.build registry + ":latest"
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
                 }
             }
         }
@@ -28,14 +31,14 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry( 'https://coldstone.azurecr.io', registryCredential ) {
-                        dockerImage.push("latest")
+                        dockerImage.push("$BUILD_NUMBER")
                     }
                 }
             }
         }
         stage('Cleaning up') {
             steps {
-                sh "docker rmi $registry:latest"
+                sh "docker rmi $registry:$BUILD_NUMBER"
             }
         }
     }
